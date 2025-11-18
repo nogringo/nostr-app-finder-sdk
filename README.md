@@ -1,39 +1,35 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Dart SDK for discovering and finding Nostr applications using. Provides tools to search, filter, and manage Nostr app discovery with caching support.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Search for a specific app by name, tags, kinds and platforms.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+// use sembast to get the database
+final dir = await getApplicationDocumentsDirectory();
+await dir.create(recursive: true);
+final dbPath = join(dir.path, 'my_database.db');
+final db = await databaseFactoryIo.openDatabase(dbPath);
+
+// create you finder instance
+final appFinder = AppFinder(db: db);
+
+// load apps in memory
+await appFinder.loadApps();
+
+// search
+final matchingApps = appFinder.search(
+    search: "upload",
+    tags: ["video"],
+    kinds: [24133],
+    platforms: ["linux"],
+);
+
+print("${matchingApps.length} apps match the search");
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+This package use Sembast and Ndk, advanced users can directly interact with it to gain more control over the research.
