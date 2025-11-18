@@ -1,8 +1,5 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
 library;
 
-export 'src/nostr_app_finder_sdk_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/app_finder.dart';
+export 'src/models/nostr_app.dart';
+export 'src/models/scored_app.dart';

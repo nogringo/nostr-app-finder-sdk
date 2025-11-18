@@ -7,7 +7,7 @@ class NostrApp {
   final String name;
 
   /// App description/about
-  final String description;
+  final String? description;
 
   /// App picture/logo URL
   final String? picture;
@@ -35,7 +35,7 @@ class NostrApp {
 
   NostrApp({
     required this.name,
-    required this.description,
+    this.description,
     this.picture,
     this.web,
     this.identifier,
@@ -150,9 +150,7 @@ class NostrApp {
 
     return NostrApp(
       name: name,
-      description: description.isNotEmpty
-          ? description
-          : (descriptionTag ?? 'No description'),
+      description: description.isNotEmpty ? description : descriptionTag,
       picture: picture,
       web: webTag,
       identifier: dTag,

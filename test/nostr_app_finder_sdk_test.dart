@@ -14,10 +14,10 @@ void main() {
     final appFinder = AppFinder(ndk: ndk);
 
     await appFinder.fetchNewApps();
+    await appFinder.loadApps();
 
-    final localEvents = await ndk.config.cache.loadEvents(kinds: [31990]);
     print(
-      "We have ${localEvents.map((e) => e.id).toSet().length} apps locally",
+      "We have ${appFinder.apps.length} apps locally",
     );
 
     ndk.destroy();
@@ -30,8 +30,9 @@ void main() {
     );
 
     final appFinder = AppFinder(ndk: ndk);
+    await appFinder.loadApps();
 
-    final matchingApps = await appFinder.search(search: "gitw");
+    final matchingApps = appFinder.search(search: "gitw");
     print("${matchingApps.length} apps match the search");
 
     ndk.destroy();
@@ -44,8 +45,9 @@ void main() {
     );
 
     final appFinder = AppFinder(ndk: ndk);
+    await appFinder.loadApps();
 
-    final matchingApps = await appFinder.search(kinds: [24133]);
+    final matchingApps = appFinder.search(kinds: [24133]);
     print("${matchingApps.length} apps match the search");
 
     ndk.destroy();
@@ -58,8 +60,9 @@ void main() {
     );
 
     final appFinder = AppFinder(ndk: ndk);
+    await appFinder.loadApps();
 
-    final matchingApps = await appFinder.search(tags: ["video", "music"]);
+    final matchingApps = appFinder.search(tags: ["video", "music"]);
     print("${matchingApps.length} apps match the search");
 
     ndk.destroy();
@@ -72,8 +75,9 @@ void main() {
     );
 
     final appFinder = AppFinder(ndk: ndk);
+    await appFinder.loadApps();
 
-    final matchingApps = await appFinder.search(platforms: ["macos"]);
+    final matchingApps = appFinder.search(platforms: ["macos"]);
     print("${matchingApps.length} apps match the search");
 
     ndk.destroy();
@@ -86,8 +90,9 @@ void main() {
     );
 
     final appFinder = AppFinder(ndk: ndk);
+    await appFinder.loadApps();
 
-    final matchingApps = await appFinder.search(
+    final matchingApps = appFinder.search(
       search: "camelus",
       // kinds: [24133],
     );
