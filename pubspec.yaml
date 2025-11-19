@@ -1,6 +1,6 @@
 name: nostr_app_finder_sdk
 description: A Dart SDK for discovering and finding Nostr applications using. Provides tools to search, filter, and manage Nostr app discovery with caching support.
-version: 1.0.0
+version: 1.0.1
 repository: https://gitworkshop.dev/npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te/nostr-app-finder-sdk
 
 environment:

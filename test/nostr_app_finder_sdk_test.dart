@@ -16,9 +16,7 @@ void main() {
     await appFinder.fetchNewApps();
     await appFinder.loadApps();
 
-    print(
-      "We have ${appFinder.apps.length} apps locally",
-    );
+    print("We have ${appFinder.apps.length} apps locally");
 
     ndk.destroy();
   });

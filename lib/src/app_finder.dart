@@ -110,15 +110,16 @@ class AppFinder {
 
     const chunkSize = 400;
     for (var i = 0; i < syncResult.needIds.length / chunkSize; i++) {
+      final startIndex = 0 + chunkSize * i;
+      final endIndex = chunkSize + chunkSize * i;
+
       final query = ndk.requests.query(
         filters: [
           Filter(
-            ids: syncResult.needIds.length > chunkSize
-                ? syncResult.needIds.sublist(
-                    0 + chunkSize * i,
-                    chunkSize + chunkSize * i,
-                  )
-                : syncResult.needIds,
+            ids: syncResult.needIds.sublist(
+              startIndex,
+              syncResult.needIds.length > endIndex ? endIndex : null,
+            ),
           ),
         ],
         explicitRelays: ["wss://nostr-01.uid.ovh"],
